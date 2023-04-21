@@ -1,0 +1,87 @@
+
+body{
+    color: #fff;
+    background: black;
+    line-height: 1.5;
+    font-family: system-ui;
+    font-size: 1.125rem;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.text{
+    display: inline-block;
+}
+.text::after {
+    content: "";
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 2px;
+    width: 0px;
+    background-color: tomato;
+}
+.text:hover::after {
+    width: 100%;
+    transition: all 0.4s;
+}
+.wrapper{
+    width:min(900px, 100% - 3rem);
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background: #323232;
+    padding: 1rem;
+}
+caption,
+th,
+td{
+    padding: 1rem;
+}
+caption,th{
+    text-align: left;
+}
+caption{
+    background: hsl(0, 0%, 0%);
+    font-weight: bold;
+    font-size: 1.5;
+    text-transform: uppercase;
+}
+th{
+    background: hsl(0 0% 0% / .5);
+}
+tr:nth-of-type(even){
+    background: hsl(0 0% 0% / .2);
+}
+
+// for the first solution of responsiveness, just wrap a container div and give it a class of first-solution then use the code below
+// .first-solution{
+//     overflow-x: auto;
+//     max-width: 100%;
+// }
+
+// now to another solution
+@media (max-width:650px) {
+    td{
+        display: block;
+    }
+    th{
+        display: none;
+    }
+    td:before{
+        content: attr(data-cell) ": ";
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+    td:first-child{
+        padding-top: 3rem;
+    }
+    td:last-child{
+        padding-bottom: 3rem;
+    }
+}
